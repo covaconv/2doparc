@@ -9,7 +9,16 @@
     <Grid>
         <TextBox x:Name="tbID" HorizontalAlignment="Left" Margin="468,33,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="125" TextChanged="tbID_TextChanged" Height="29"/>
         <Button x:Name="btMasInfo" Content="Más info" HorizontalAlignment="Left" Margin="627,33,0,0" VerticalAlignment="Top" Width="125" Height="29" Click="btMasInfo_Click"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="41,98,400,70" MinColumnWidth="10" AutoGenerateColumns="False" SelectionChanged="DataGrid_SelectionChanged"/>
+        <DataGrid x:Name="dGDisplay" Margin="41,98,400,70" MinColumnWidth="10" 
+          AutoGenerateColumns="False" 
+          SelectionChanged="DataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID Compra" Binding="{Binding idProd}"/>
+                <DataGridTextColumn Header="Monto" Binding="{Binding monto}"/>
+                <DataGridTextColumn Header="Fecha" Binding="{Binding fecha}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
         <Button x:Name="btRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="41,383,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.005,0.493" Height="30" Width="132"/>
         <Label Content="Productos" HorizontalAlignment="Left" Margin="41,0,0,0" VerticalAlignment="Top" FontFamily="Italic Outline Art" FontSize="40" FontWeight="Bold" Height="98"/>
         <Image HorizontalAlignment="Left" Height="105" Margin="468,98,0,0" VerticalAlignment="Top" Width="125" Source="/itam.jpg"/>
