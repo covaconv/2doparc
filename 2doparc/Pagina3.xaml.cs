@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,25 @@ namespace _2doparc
         public Pagina3()
         {
             InitializeComponent();
+            try
+            {
+                SqlConnection con;
+            }
+        }
+
+        private void tbID_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btMasInfo_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
