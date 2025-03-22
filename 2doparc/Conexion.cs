@@ -17,7 +17,7 @@ namespace _2doparc
             {
                 cnn = new SqlConnection("Data Source=macareno;Initial Catalog =dbComida; User ID = sa; Password = sqladmin21");
                 cnn.Open();
-                MessageBox.Show("Se conecto");
+                //MessageBox.Show("Se conecto");
             }
             catch (Exception ex)
             {
