@@ -29,42 +29,72 @@ namespace _2doparc
             InitializeComponent();
             try
             {
-                //se despliegan todos los productos de la Compra
-                SqlConnection con1;
-                con1 = Conexion.agregarConexion();
-                string query1 = String.Format("select cp.idProd, c.monto, c.fecha from CompraProducto cp inner join compra c on cp.idCompra = c.idCompra where c.idCompra = {0}", idCompra);
-                SqlCommand cmd1 = new SqlCommand(query1, con1);
-                SqlDataAdapter da = new SqlDataAdapter(cmd1);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                dGDisplay.ItemsSource = dt.DefaultView;
-                con1.Close();
+                if (tipo.Equals("Cliente")) {
+                    lbTitle.Content = "Productos de la compra";
+                    //se despliegan todos los productos de la Compra
+                    SqlConnection con1;
+                    con1 = Conexion.agregarConexion();
+                    string query1 = String.Format("select cp.idProd, c.monto, c.fecha from CompraProducto cp inner join compra c on cp.idCompra = c.idCompra where c.idCompra = {0}", idCompra);
+                    SqlCommand cmd1 = new SqlCommand(query1, con1);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd1);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dGDisplay.ItemsSource = dt.DefaultView;
+                    con1.Close();
 
-                //Obtengo el id en la primera fila y columna
-                object firstColumnValue = null;
-                int primerDato = 0;
-                if (dGDisplay.Items.Count > 0)
-                {
-                    DataRowView firstRow = dGDisplay.Items[0] as DataRowView;
-                    if (firstRow != null)
+                    //Obtengo el id en la primera fila y columna
+                    object firstColumnValue = null;
+                    int primerDato = 0;
+                    if (dGDisplay.Items.Count > 0)
                     {
-                        firstColumnValue = firstRow[0];
-                        primerDato = Convert.ToInt32(firstColumnValue);
+                        DataRowView firstRow = dGDisplay.Items[0] as DataRowView;
+                        if (firstRow != null)
+                        {
+                            firstColumnValue = firstRow[0];
+                            primerDato = Convert.ToInt32(firstColumnValue);
+                        }
+                    }
+                    displayDatosProducto(primerDato);
+                } else if (tipo.Equals("Empresa"))
+                {
+                    lbTitle.Content = "Productos ofertados";
+                    //se despliegan todos los productos que ofrece la compañia
+                    SqlConnection con1;
+                    con1 = Conexion.agregarConexion();
+                    string query1 = String.Format("select p.idProd, p.precioFinal, p.fechaPosteo from Producto p where p.nomUsuario = '{0}'", idUsuario);
+                    SqlCommand cmd1 = new SqlCommand(query1, con1);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd1);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dGDisplay.ItemsSource = dt.DefaultView;
+                    con1.Close();
+
+                    //Obtengo el id en la primera fila y columna
+                    object firstColumnValue = null;
+                    int primerDato;
+                    if (dGDisplay.Items.Count > 0)
+                    {
+                        DataRowView firstRow = dGDisplay.Items[0] as DataRowView;
+                        if (firstRow != null)
+                        {
+                            firstColumnValue = firstRow[0];
+                            primerDato = Convert.ToInt32(firstColumnValue);
+                            displayDatosProducto(primerDato);
+                        } 
                     }
                 }
-                displayDatosProducto(primerDato);
 
             }
             catch (Exception ex) 
             {
-                MessageBox.Show("algo fallo" + ex);
+                MessageBox.Show("algo fallo " + ex);
             }
 
         }
 
         private void displayDatosProducto(int idProd)
         {
-            //Display datos del primerDato
+            //Display datos de idProd
             SqlConnection con2;
             con2 = Conexion.agregarConexion();
             string query2 = String.Format("select p.fechaPosteo, p.fechaVenta, p.precioBase, p.caducidad, p.descuento, p.cantidadStock, p.precioFinal from Producto p where p.idProd = {0}", idProd);
@@ -82,6 +112,7 @@ namespace _2doparc
                 txBkPrecioFinal.Text = lector.GetDecimal(6).ToString();
 
             }
+            else tbID.Text = "Revisa que el id sea correcto";
             con2.Close();
         }
 
@@ -104,8 +135,15 @@ namespace _2doparc
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Revisa que el id sea correcto" + ex);
+                MessageBox.Show("Revisa que el id sea correcto " + ex);
             }
+        }
+
+        private void btRegresar_Click(object sender, RoutedEventArgs e)
+        {
+            Pagina2 pagina = new Pagina2();
+            pagina.Show();
+            this.Close();
         }
     }
 }
