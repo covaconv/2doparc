@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <None Remove="itam.jpg" />
+    <None Remove="rata.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,7 @@
 
   <ItemGroup>
     <Resource Include="itam.jpg" />
+    <Resource Include="rata.jpg" />
   </ItemGroup>
 
 </Project>

@@ -21,9 +21,9 @@ namespace _2doparc
     /// </summary>
     public partial class Pagina3 : Window
     {
-        public static string idUsuario = "aniel";
-        public static string tipo = "Cliente";
-        public static int idCompra = 6;
+        public static string idUsuario = Application.Current.Properties["nomUsuario"].ToString();
+        public static string tipo = Application.Current.Properties["tipo"].ToString();
+        public static int idCompra = int.Parse((string)Application.Current.Properties["idCompra"]);
         public Pagina3()
         {
             InitializeComponent();
