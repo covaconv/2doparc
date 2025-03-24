@@ -9,18 +9,18 @@
     <Grid>
         <Image HorizontalAlignment="Left" Height="126" Margin="30,42,0,0" VerticalAlignment="Top" Width="130" Source="/rata.jpg"/>
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="162,42,0,0" VerticalAlignment="Top" Width="72" FontSize="16"/>
-        <TextBlock x:Name="tbNombre" HorizontalAlignment="Left" Margin="234,51,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="15" Width="164"/>
+        <TextBlock x:Name="tbNombre" HorizontalAlignment="Left" Margin="234,51,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="41" Width="164"/>
         <Label Content="Tel(s)" HorizontalAlignment="Left" Margin="162,105,0,0" VerticalAlignment="Top" FontSize="16" Width="51"/>
         <Label Content="Dirección" HorizontalAlignment="Left" Margin="30,217,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBlock x:Name="tbDireccion" HorizontalAlignment="Left" Margin="123,225,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="41" Width="275"/>
+        <TextBlock x:Name="tbDireccion" HorizontalAlignment="Left" Margin="123,225,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="41" Width="251"/>
         <Label Content="Administrador" HorizontalAlignment="Left" Margin="30,272,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Button x:Name="btRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="30,347,0,0" VerticalAlignment="Top" Height="43" Width="152" FontSize="16" Click="btRegresar_Click"/>
-        <TextBlock x:Name="tbAdmin" HorizontalAlignment="Left" Margin="162,280,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="15" Width="173"/>
+        <TextBlock x:Name="tbAdmin" HorizontalAlignment="Left" Margin="162,280,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="49" Width="212"/>
         <DataGrid x:Name="dgDatos" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="403,58,10,105" SelectionChanged="dgDatos_SelectionChanged"/>
         <Button x:Name="btDetalles" Content="Ver más detalles" HorizontalAlignment="Left" Margin="592,347,0,0" VerticalAlignment="Top" Height="43" Width="176" FontSize="16" Click="btDetalles_Click"/>
         <Label Content="ID" HorizontalAlignment="Left" Margin="403,347,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="tboxID" HorizontalAlignment="Left" Margin="446,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Height="43"/>
-        <Label x:Name="lbTit" Content="Label" HorizontalAlignment="Left" Margin="403,22,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="lbTit" Content="Título" HorizontalAlignment="Left" Margin="403,22,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
         <ListBox x:Name="lBoxTel" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="213,97,426,240" SelectionChanged="lBoxTel_SelectionChanged"/>
 
     </Grid>

@@ -80,6 +80,7 @@ namespace _2doparc
                 }
                 else
                 {
+                    tboxID.Text = "No es necesario ingresar id";
                     //Añadir nombre de la empresa
                     lbTit.Content = "Merma ofrecida: ";
                     string queryNombre = String.Format("select Empresa.nombre from Empresa where Empresa.nomUsuario='ITAM'", nomUsuario);
@@ -161,17 +162,17 @@ namespace _2doparc
 
         private void btDetalles_Click(object sender, RoutedEventArgs e)
         {
-            string idCompra = tboxID.Text;
+            
             if (tipo.Equals("Cliente"))
             {
-                
+                int idCompra = int.Parse(tboxID.Text);
                 Application.Current.Properties["idCompra"] = idCompra;
             }
             else
             {
-                tboxID.Text = "No es necesario ingresar id";
+                Application.Current.Properties["idCompra"] = 0;
             }
-            Pagina3 pagina = new Pagina3();
+                Pagina3 pagina = new Pagina3();
             pagina.Show();
             this.Close();
         }

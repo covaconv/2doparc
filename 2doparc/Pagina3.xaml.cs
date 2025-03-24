@@ -23,7 +23,7 @@ namespace _2doparc
     {
         public static string idUsuario = Application.Current.Properties["nomUsuario"].ToString();
         public static string tipo = Application.Current.Properties["tipo"].ToString();
-        public static int idCompra = int.Parse((string)Application.Current.Properties["idCompra"]);
+        public static int idCompra = int.Parse(Application.Current.Properties["idCompra"].ToString());
         public Pagina3()
         {
             InitializeComponent();
