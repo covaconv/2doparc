@@ -6,22 +6,31 @@
         xmlns:local="clr-namespace:_2doparc"
         mc:Ignorable="d"
         Title="Pagina2" Height="450" Width="800" Loaded="Window_Loaded">
-    <Grid Margin="0,0,10,10">
-        <Image HorizontalAlignment="Left" Height="126" Margin="30,42,0,0" VerticalAlignment="Top" Width="130" Source="/rata.jpg"/>
-        <Label Content="Nombre" HorizontalAlignment="Left" Margin="162,42,0,0" VerticalAlignment="Top" Width="72" FontSize="16"/>
-        <TextBlock x:Name="tbNombre" HorizontalAlignment="Left" Margin="234,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="41" Width="164"/>
-        <Label Content="Tel(s)" HorizontalAlignment="Left" Margin="162,105,0,0" VerticalAlignment="Top" FontSize="16" Width="51"/>
-        <Label Content="Dirección" HorizontalAlignment="Left" Margin="30,217,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBlock x:Name="tbDireccion" HorizontalAlignment="Left" Margin="123,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="41" Width="251"/>
-        <Label Content="Administrador" HorizontalAlignment="Left" Margin="30,272,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Button x:Name="btRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="30,347,0,0" VerticalAlignment="Top" Height="43" Width="152" FontSize="16" Click="btRegresar_Click"/>
-        <TextBlock x:Name="tbAdmin" HorizontalAlignment="Left" Margin="162,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="49" Width="212"/>
-        <DataGrid x:Name="dgDatos" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="403,58,10,105" SelectionChanged="dgDatos_SelectionChanged"/>
-        <Button x:Name="btDetalles" Content="Ver más detalles" HorizontalAlignment="Left" Margin="592,347,0,0" VerticalAlignment="Top" Height="43" Width="176" FontSize="16" Click="btDetalles_Click"/>
-        <Label Content="ID" HorizontalAlignment="Left" Margin="403,347,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="tboxID" HorizontalAlignment="Left" Margin="446,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Height="43"/>
-        <Label x:Name="lbTit" Content="Título" HorizontalAlignment="Left" Margin="403,22,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-        <ListBox x:Name="lBoxTel" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="213,97,426,240" SelectionChanged="lBoxTel_SelectionChanged"/>
+    <Grid Margin="0,0,0,-6" OpacityMask="#FF9CD4F9">
+        <Image HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="955" Source="/WhatsApp Image 2025-03-25 at 2.19.15 PM.jpeg" Margin="-15,-138,0,0" Stretch="Fill"/>
+
+        <Image HorizontalAlignment="Left" Height="53" Margin="19,86,0,0" VerticalAlignment="Top" Width="130" Source="/logo.png"/>
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="162,44,0,0" VerticalAlignment="Top" Width="72" FontSize="16" FontWeight="Bold" Foreground="White"/>
+        <TextBlock x:Name="tbNombre" HorizontalAlignment="Left" Margin="234,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="164" Foreground="White" Background="#FF3746AE"/>
+        <Label Content="Tel(s)" HorizontalAlignment="Left" Margin="162,105,0,0" VerticalAlignment="Top" FontSize="16" Width="51" FontWeight="Bold" Foreground="White"/>
+        <Label Content="Dirección" HorizontalAlignment="Left" Margin="30,217,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="#FF3746AE"/>
+        <TextBlock x:Name="tbDireccion" HorizontalAlignment="Left" Margin="162,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="212" Foreground="#FF3746AE" Background="#FF9CD4F9"/>
+        <Label Content="Administrador" HorizontalAlignment="Left" Margin="30,272,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="#FF3746AE"/>
+        <Button x:Name="btRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="30,347,0,0" VerticalAlignment="Top" Height="43" Width="152" FontSize="16" Click="btRegresar_Click" BorderBrush="#FF9CD4F9" Background="#FF9CD4F9" Foreground="#FF3746AE" FontWeight="Bold"/>
+        <TextBlock x:Name="tbAdmin" HorizontalAlignment="Left" Margin="162,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="212" Foreground="#FF3746AE" Background="#FF9CD4F9"/>
+        <DataGrid x:Name="dgDatos" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="403,58,10,105" SelectionChanged="dgDatos_SelectionChanged" Foreground="#FF3746AE" BorderBrush="Black">
+            <DataGrid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF9CD4F9" Offset="0.974"/>
+                </LinearGradientBrush>
+            </DataGrid.Background>
+        </DataGrid>
+        <Button x:Name="btDetalles" Content="Ver más detalles" HorizontalAlignment="Left" Margin="592,347,0,0" VerticalAlignment="Top" Height="43" Width="176" FontSize="16" Click="btDetalles_Click" Background="#FF9CD4F9" BorderBrush="#FF9CD4F9" Foreground="#FF3746AE" FontWeight="Bold"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="403,347,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF3746AE" FontWeight="Bold"/>
+        <TextBox x:Name="tboxID" HorizontalAlignment="Left" Margin="446,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Height="43" Foreground="#FF3746AE"/>
+        <Label x:Name="lbTit" Content="Título" HorizontalAlignment="Left" Margin="403,13,0,0" VerticalAlignment="Top" FontSize="26" FontWeight="Bold" Foreground="White"/>
+        <ListBox x:Name="lBoxTel" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="236,104,404,233" SelectionChanged="lBoxTel_SelectionChanged" Background="#FF3746AE" Foreground="White"/>
 
     </Grid>
 </Window>

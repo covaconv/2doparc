@@ -10,8 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="fondo.jpeg" />
     <None Remove="itam.jpg" />
+    <None Remove="logo.png" />
+    <None Remove="logo1.png" />
     <None Remove="rata.jpg" />
+    <None Remove="WhatsApp Image 2025-03-25 at 2.19.15 PM.jpeg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,8 +24,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="fondo.jpeg" />
     <Resource Include="itam.jpg" />
+    <Resource Include="logo.png" />
+    <Resource Include="logo1.png" />
     <Resource Include="rata.jpg" />
+    <Resource Include="WhatsApp Image 2025-03-25 at 2.19.15 PM.jpeg" />
   </ItemGroup>
 
 </Project>
