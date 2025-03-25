@@ -15,9 +15,9 @@
         </Grid.ColumnDefinitions>
         <Image Height="257" Width="504" Source="/Diseño sin título (1).png" IsEnabled="False" VerticalAlignment="Top" HorizontalAlignment="Left" Stretch="None" Grid.ColumnSpan="4" Margin="-8,0,0,0"/>
         <Label Content="Admin Usuario " HorizontalAlignment="Left" Margin="18,317,0,0" VerticalAlignment="Top" Height="38" Width="158" FontSize="18" Grid.Column="3" FontFamily="Segoe UI Black" Foreground="#FF3746AE"/>
-        <TextBox x:Name="adimTxtBox" HorizontalAlignment="Left" Margin="38,355,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="210" Grid.Column="2" Height="30" Cursor="IBeam" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="adimTxtBox" HorizontalAlignment="Left" Margin="38,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Grid.Column="2" Height="30" Cursor="IBeam" Grid.ColumnSpan="2"/>
         <Label Content="Contraseña" HorizontalAlignment="Left" Margin="38,403,0,0" VerticalAlignment="Top" Grid.Column="3" FontSize="18" FontFamily="Segoe UI Black" Foreground="#FF3746AE"/>
-        <TextBox x:Name="contraTxtBox" HorizontalAlignment="Left" Margin="38,437,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="210" Grid.Column="2" Height="30" Cursor="IBeam" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="contraTxtBox" HorizontalAlignment="Left" Margin="38,437,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Grid.Column="2" Height="30" Cursor="IBeam" Grid.ColumnSpan="2"/>
         <Button x:Name="ingresarBtn" Content="Ingresar" HorizontalAlignment="Left" Margin="46,493,0,0" VerticalAlignment="Top" Click="Button_Click" Grid.Column="3" Height="37" Width="102" FontFamily="Segoe UI Black" FontSize="16" Foreground="#FF3746AE" BorderBrush="#FF9CD4F9" Background="#FF9CD4F9" Cursor="Hand">
         </Button>
         <Rectangle Grid.Column="2" HorizontalAlignment="Left" Height="110" Margin="20,74,0,0" VerticalAlignment="Top" Width="246" StrokeThickness="4" Fill="#FF3746AE" Grid.ColumnSpan="2"/>
