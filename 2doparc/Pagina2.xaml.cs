@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -155,15 +156,14 @@ namespace _2doparc
 
         private void btRegresar_Click(object sender, RoutedEventArgs e)
         {
-            Pagina1 pagina = new Pagina1();
+            Pagina2 pagina = new Pagina2();
             pagina.Show();
             this.Close();
         }
 
         private void btDetalles_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+           
                 if (tipo.Equals("Cliente"))
                 {
                     int idCompra = int.Parse(tboxID.Text);
@@ -176,12 +176,9 @@ namespace _2doparc
                 Pagina3 pagina = new Pagina3();
                 pagina.Show();
                 this.Close();
-            }
-            catch (Exception ex){
-                MessageBox.Show("Debe ingresar un id de compra" + ex);
-            }
             
-        }
+            }
+        
 
         private void lBoxTel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
