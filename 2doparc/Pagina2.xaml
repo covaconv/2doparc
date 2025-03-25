@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2doparc"
         mc:Ignorable="d"
-        Title="Pagina2" Height="450" Width="800">
-    <Grid>
+        Title="Pagina2" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid Margin="0,0,10,10">
         <Image HorizontalAlignment="Left" Height="126" Margin="30,42,0,0" VerticalAlignment="Top" Width="130" Source="/rata.jpg"/>
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="162,42,0,0" VerticalAlignment="Top" Width="72" FontSize="16"/>
         <TextBlock x:Name="tbNombre" HorizontalAlignment="Left" Margin="234,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="41" Width="164"/>

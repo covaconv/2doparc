@@ -31,6 +31,59 @@ namespace _2doparc
         public Pagina2()
         {
             InitializeComponent();
+            
+        }
+
+        private void dgDatos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void listBoxTel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void btRegresar_Click(object sender, RoutedEventArgs e)
+        {
+            Pagina1 pagina = new Pagina1();
+            pagina.Show();
+            this.Close();
+        }
+
+        private void btDetalles_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (tipo.Equals("Cliente"))
+                {
+                    int idCompra = int.Parse(tboxID.Text);
+                    Application.Current.Properties["idCompra"] = idCompra;
+                }
+                else
+                {
+                    Application.Current.Properties["idCompra"] = 0;
+                }
+                Pagina3 pagina = new Pagina3();
+                pagina.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ingrese ID de compra");
+            }
+                
+            
+            }
+        
+
+        private void lBoxTel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
             try
             {
                 //líneas temp
@@ -41,7 +94,7 @@ namespace _2doparc
                 if (tipo.Equals("Cliente"))
                 {
                     lbTit.Content = "Compras: ";
-              
+
                     //Añadir teléfono
                     string queryTel = String.Format("select Cliente.tel from Cliente where Cliente.nomUsuario = '{0}'", nomUsuario);
                     SqlCommand cmdTel = new SqlCommand(queryTel, con);
@@ -76,7 +129,7 @@ namespace _2doparc
                     DataTable dtTabla = new DataTable();
                     daTabla.Fill(dtTabla);
                     dgDatos.ItemsSource = dtTabla.DefaultView;
-                    
+
 
                 }
                 else
@@ -110,7 +163,7 @@ namespace _2doparc
                     drTel.Close();
 
                     //Añadir dirección
-                    string queryDir = String.Format("select Empresa.estado, Empresa.municipio, Empresa.colonia, Empresa.calle, Empresa.CP from Empresa where Empresa.nomUsuario = '{0}'",nomUsuario);
+                    string queryDir = String.Format("select Empresa.estado, Empresa.municipio, Empresa.colonia, Empresa.calle, Empresa.CP from Empresa where Empresa.nomUsuario = '{0}'", nomUsuario);
                     SqlCommand cmdDir = new SqlCommand(queryDir, con);
                     SqlDataReader dDir = cmdDir.ExecuteReader();
                     if (dDir.Read())
@@ -142,47 +195,6 @@ namespace _2doparc
             {
                 MessageBox.Show("Hubo un error " + ex);
             }
-        }
-
-        private void dgDatos_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void listBoxTel_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-        }
-
-        private void btRegresar_Click(object sender, RoutedEventArgs e)
-        {
-            Pagina2 pagina = new Pagina2();
-            pagina.Show();
-            this.Close();
-        }
-
-        private void btDetalles_Click(object sender, RoutedEventArgs e)
-        {
-           
-                if (tipo.Equals("Cliente"))
-                {
-                    int idCompra = int.Parse(tboxID.Text);
-                    Application.Current.Properties["idCompra"] = idCompra;
-                }
-                else
-                {
-                    Application.Current.Properties["idCompra"] = 0;
-                }
-                Pagina3 pagina = new Pagina3();
-                pagina.Show();
-                this.Close();
-            
-            }
-        
-
-        private void lBoxTel_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
