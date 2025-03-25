@@ -155,26 +155,32 @@ namespace _2doparc
 
         private void btRegresar_Click(object sender, RoutedEventArgs e)
         {
-            Pagina2 pagina = new Pagina2();
+            Pagina1 pagina = new Pagina1();
             pagina.Show();
             this.Close();
         }
 
         private void btDetalles_Click(object sender, RoutedEventArgs e)
         {
-            
-            if (tipo.Equals("Cliente"))
+            try
             {
-                int idCompra = int.Parse(tboxID.Text);
-                Application.Current.Properties["idCompra"] = idCompra;
-            }
-            else
-            {
-                Application.Current.Properties["idCompra"] = 0;
-            }
+                if (tipo.Equals("Cliente"))
+                {
+                    int idCompra = int.Parse(tboxID.Text);
+                    Application.Current.Properties["idCompra"] = idCompra;
+                }
+                else
+                {
+                    Application.Current.Properties["idCompra"] = 0;
+                }
                 Pagina3 pagina = new Pagina3();
-            pagina.Show();
-            this.Close();
+                pagina.Show();
+                this.Close();
+            }
+            catch (Exception ex){
+                MessageBox.Show("Debe ingresar un id de compra" + ex);
+            }
+            
         }
 
         private void lBoxTel_SelectionChanged(object sender, SelectionChangedEventArgs e)
