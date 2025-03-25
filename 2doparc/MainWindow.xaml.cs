@@ -31,7 +31,7 @@ namespace _2doparc
             try
             {
                 con = Conexion.agregarConexion();
-                cmd = new SqlCommand(String.Format("select contra from usuarios where nombreUsuario = '{0}'", adimTxtBox.Text), con);
+                cmd = new SqlCommand(String.Format("select contraseña from Usuario u where u.nomUsuario = '{0}' and u.tipo = 'Admins'", adimTxtBox.Text), con);
                 dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
