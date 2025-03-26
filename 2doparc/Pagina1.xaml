@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2doparc"
         mc:Ignorable="d"
-        Title="Pagina1" Height="450" Width="800">
+        Title="Pagina1" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        
+        <Label x:Name="lbBusquedaCliente" Content="Búsqueda Clientes" HorizontalAlignment="Left" Margin="67,50,0,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
+        <Label Content="Búsqueda Empresas" HorizontalAlignment="Left" Margin="458,50,0,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
+        <TextBox x:Name="txClientes" HorizontalAlignment="Left" Margin="67,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txClientes_TextChanged" Text="nomUsuario"/>
+        <Button x:Name="btClientes" Content="Buscar" HorizontalAlignment="Left" Margin="201,130,0,0" VerticalAlignment="Top" Width="60" Click="btClientes_Click"/>
+        <Button x:Name="btEmpresas" Content="Buscar" HorizontalAlignment="Left" Margin="592,130,0,0" VerticalAlignment="Top" Width="58" Click="btEmpresas_Click"/>
+        <TextBox x:Name="txEmpresas" HorizontalAlignment="Left" Margin="458,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="113" Text="nomUsuario"/>
+        <DataGrid x:Name="dgClientes" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="67,184,465,65" SelectionChanged="dgClientes_SelectionChanged"/>
+        <DataGrid x:Name="dgEmpresas" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="458,184,53,65"/>
+        <Button x:Name="btTodosClientes" Content="Mostrar todos" HorizontalAlignment="Left" Margin="254,391,0,0" VerticalAlignment="Top" Click="btTodosClientes_Click"/>
+        <Button x:Name="btTodosEmpresas" Content="Mostrar todos" HorizontalAlignment="Left" Margin="668,391,0,0" VerticalAlignment="Top" Click="btTodosEmpresas_Click"/>
+        <Button x:Name="btDetallesClientes" Content="Ver más" HorizontalAlignment="Left" Margin="281,130,0,0" VerticalAlignment="Top" Width="52" Click="btDetallesClientes_Click"/>
+        <Button x:Name="btDetallesEmpresas" Content="Ver más" HorizontalAlignment="Left" Margin="696,130,0,0" VerticalAlignment="Top" Width="53" Click="btDetallesEmpresas_Click"/>
+
     </Grid>
 </Window>

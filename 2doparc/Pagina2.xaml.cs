@@ -22,8 +22,8 @@ namespace _2doparc
     /// </summary>
     public partial class Pagina2 : Window
     {
-        public static string nomUsuario= "aniel"; //Application.Current.Properties["nomUsuario"].ToString();
-        public static string tipo= "Cliente"; //Application.Current.Properties["tipo"].ToString();
+        public static string nomUsuario= Application.Current.Properties["nomUsuario"].ToString();
+        public static string tipo= Application.Current.Properties["tipo"].ToString();
         //public static int idCompra = 5;
         
 
@@ -87,9 +87,13 @@ namespace _2doparc
             try
             {
                 //líneas temp
+                /*
                 Application.Current.Properties["nomUsuario"] = "aniel";
                 Application.Current.Properties["tipo"] = "Cliente";
+                */
                 //--------------------------------------------------
+                string nomUsuario = Application.Current.Properties["nomUsuario"].ToString();
+                string tipo = Application.Current.Properties["tipo"].ToString();
                 SqlConnection con = Conexion.agregarConexion();
                 if (tipo.Equals("Cliente"))
                 {
@@ -137,7 +141,7 @@ namespace _2doparc
                     tboxID.Text = "No es necesario ingresar id";
                     //Añadir nombre de la empresa
                     lbTit.Content = "Merma ofrecida: ";
-                    string queryNombre = String.Format("select Empresa.nombre from Empresa where Empresa.nomUsuario='ITAM'", nomUsuario);
+                    string queryNombre = String.Format("select Empresa.nombre from Empresa where Empresa.nomUsuario='{0}'", nomUsuario);
                     SqlCommand cmdNombre = new SqlCommand(queryNombre, con);
                     SqlDataReader drNombre = cmdNombre.ExecuteReader();
                     if (drNombre.Read())
@@ -152,7 +156,7 @@ namespace _2doparc
                     drNombre.Close();
 
                     //Añadir teléfonos
-                    string queryTel = String.Format("select Telefono.telefono from Telefono where Telefono.nomUsuario = 'ITAM'", nomUsuario);
+                    string queryTel = String.Format("select Telefono.telefono from Telefono where Telefono.nomUsuario = '{0}'", nomUsuario);
                     SqlCommand cmdTel = new SqlCommand(queryTel, con);
                     SqlDataReader drTel = cmdTel.ExecuteReader();
 
