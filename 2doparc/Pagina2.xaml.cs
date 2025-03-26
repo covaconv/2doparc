@@ -107,7 +107,7 @@ namespace _2doparc
                     drTel.Close();
 
                     //Añadir nombre del cliente
-                    string queryNombre = String.Format("select nomPila, apellidoPat, apellidoMat from Cliente where Cliente.nomUsuario = 'aniel'", nomUsuario);
+                    string queryNombre = String.Format("select nomPila, apellidoPat, apellidoMat from Cliente where Cliente.nomUsuario = '{0}'", nomUsuario);
                     SqlCommand cmdNombre = new SqlCommand(queryNombre, con);
                     SqlDataReader drNombre = cmdNombre.ExecuteReader();
                     if (drNombre.Read())
