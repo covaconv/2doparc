@@ -86,14 +86,9 @@ namespace _2doparc
         {
             try
             {
-                //líneas temp
-                /*
-                Application.Current.Properties["nomUsuario"] = "aniel";
-                Application.Current.Properties["tipo"] = "Cliente";
-                */
-                //--------------------------------------------------
-                string nomUsuario = Application.Current.Properties["nomUsuario"].ToString();
-                string tipo = Application.Current.Properties["tipo"].ToString();
+                
+                nomUsuario = Application.Current.Properties["nomUsuario"].ToString();
+                tipo = Application.Current.Properties["tipo"].ToString();
                 SqlConnection con = Conexion.agregarConexion();
                 if (tipo.Equals("Cliente"))
                 {
