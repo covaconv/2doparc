@@ -31,25 +31,30 @@ namespace _2doparc
         private void displayDatosProducto(int idProd)
         {
             //Display datos de idProd
-            SqlConnection con2;
-            con2 = Conexion.agregarConexion();
-            string query2 = String.Format("select p.fechaPosteo, p.fechaVenta, p.precioBase, p.caducidad, p.descuento, p.cantidadStock, p.precioFinal from Producto p where p.idProd = {0}", idProd);
-            SqlCommand cmd2 = new SqlCommand(query2, con2);
-            SqlDataReader lector = cmd2.ExecuteReader();
-            if (lector != null)
+            using (SqlConnection con2 = Conexion.agregarConexion())
             {
-                lector.Read();
-                txBkDatePost.Text = lector.GetDateTime(0).ToString();
-                txBkSellDate.Text = lector.GetDateTime(1).ToString();
-                txBkPrecioBase.Text = lector.GetInt16(2).ToString();
-                txBkCaducidad.Text = lector.GetDateTime(3).ToString();
-                txBkDescuento.Text = lector.GetDecimal(4).ToString();
-                txBkCantidad.Text = lector.GetInt16(5).ToString();
-                txBkPrecioFinal.Text = lector.GetDecimal(6).ToString();
+                string query2 = string.Format("select p.fechaPosteo, p.fechaVenta, p.precioBase, p.caducidad, p.descuento, p.cantidadStock, p.precioFinal from Producto p where p.idProd = {0}", idProd);
+                SqlCommand cmd2 = new SqlCommand(query2, con2);
 
+                using (SqlDataReader lector = cmd2.ExecuteReader())
+                {
+                    if (lector.Read())
+                    {
+                        txBkDatePost.Text = lector.IsDBNull(0) ? "" : lector.GetDateTime(0).ToString();
+                        txBkSellDate.Text = lector.IsDBNull(1) ? "" : lector.GetDateTime(1).ToString();
+                        txBkPrecioBase.Text = lector.IsDBNull(2) ? "" : lector.GetInt16(2).ToString();
+                        txBkCaducidad.Text = lector.IsDBNull(3) ? "" : lector.GetDateTime(3).ToString();
+                        txBkDescuento.Text = lector.IsDBNull(4) ? "" : lector.GetDecimal(4).ToString();
+                        txBkCantidad.Text = lector.IsDBNull(5) ? "" : lector.GetInt16(5).ToString();
+                        txBkPrecioFinal.Text = lector.IsDBNull(6) ? "" : lector.GetDecimal(6).ToString();
+                    }
+                    else
+                    {
+                        tbID.Text = "Revisa que el id sea correcto";
+                    }
+                }
             }
-            else tbID.Text = "Revisa que el id sea correcto";
-            con2.Close();
+
         }
 
         private void tbID_TextChanged(object sender, TextChangedEventArgs e)

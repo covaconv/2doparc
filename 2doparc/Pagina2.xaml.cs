@@ -55,18 +55,43 @@ namespace _2doparc
         {
             try
             {
+                tipo = Application.Current.Properties["tipo"].ToString();
                 if (tipo.Equals("Cliente"))
                 {
                     int idCompra = int.Parse(tboxID.Text);
                     Application.Current.Properties["idCompra"] = idCompra;
+                    Pagina3 pagina = new Pagina3();
+                    pagina.Show();
+                    this.Close();
                 }
                 else
                 {
-                    Application.Current.Properties["idCompra"] = 0;
+                    try
+                    {
+                        SqlConnection con = Conexion.agregarConexion();
+                        if (con != null)
+                        {
+                            String query = String.Format("select top(1) idProd from Producto where nomUsuario = '{0}' order by idProd asc", Application.Current.Properties["nomUsuario"].ToString());
+                            SqlCommand cmd = new SqlCommand(query, con);
+                            SqlDataReader dr = cmd.ExecuteReader();
+                            if (dr.Read())
+                            {
+                                Int64 idProd = dr.GetInt64(0);
+                                Application.Current.Properties["idCompra"] = idProd;
+                                Pagina3 pagina = new Pagina3();
+                                pagina.Show();
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No hay productos");
+                            } dr.Close();
+                        }
+                    }
+                    catch (Exception ex) {
+                        MessageBox.Show("Error al obtener id de producto " + ex);
+                    }
                 }
-                Pagina3 pagina = new Pagina3();
-                pagina.Show();
-                this.Close();
             }
             catch (Exception ex)
             {
@@ -74,7 +99,7 @@ namespace _2doparc
             }
                 
             
-            }
+        }
         
 
         private void lBoxTel_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -87,8 +112,8 @@ namespace _2doparc
             try
             {
                 
-                nomUsuario = Application.Current.Properties["nomUsuario"].ToString();
-                tipo = Application.Current.Properties["tipo"].ToString();
+                String nomUsuario = Application.Current.Properties["nomUsuario"].ToString();
+                String tipo = Application.Current.Properties["tipo"].ToString();
                 SqlConnection con = Conexion.agregarConexion();
                 if (tipo.Equals("Cliente"))
                 {
@@ -118,8 +143,7 @@ namespace _2doparc
                     else
                     {
                         tbNombre.Text = "No existe el usuario";
-                    }
-                    drNombre.Close();
+                    } drNombre.Close();
 
                     //Añadir datos tabla
                     string queryTabla = String.Format("select Compra.idCompra, Compra.fecha, Compra.monto, COUNT(*) as cantidadProductos from Compra inner join CompraProducto on CompraProducto.idCompra=Compra.idCompra where Compra.nomUsuario = '{0}' group by Compra.idCompra, Compra.fecha, Compra.monto", nomUsuario);
@@ -136,12 +160,12 @@ namespace _2doparc
                     tboxID.Text = "No es necesario ingresar id";
                     //Añadir nombre de la empresa
                     lbTit.Content = "Merma ofrecida: ";
-                    string queryNombre = String.Format("select Empresa.nombre from Empresa where Empresa.nomUsuario='{0}'", nomUsuario);
+                    string queryNombre = String.Format("select Empresa.nomEmpresa from Empresa where Empresa.nomUsuario='{0}'", nomUsuario);
                     SqlCommand cmdNombre = new SqlCommand(queryNombre, con);
                     SqlDataReader drNombre = cmdNombre.ExecuteReader();
                     if (drNombre.Read())
                     {
-                        string nom = String.Format("{0}", drNombre.GetString(0));
+                        string nom = drNombre.GetString(0);
                         tbNombre.Text = nom;
                     }
                     else
@@ -188,7 +212,7 @@ namespace _2doparc
                     DataTable dtTabla = new DataTable();
                     daTabla.Fill(dtTabla);
                     dgDatos.ItemsSource = dtTabla.DefaultView;
-                }
+                } con.Close();
             }
             catch (Exception ex)
             {

@@ -81,9 +81,9 @@ namespace _2doparc
             string nomUsuario = txEmpresas.Text;
             Application.Current.Properties["nomUsuario"] = nomUsuario;
             Application.Current.Properties["tipo"] = "Empresa";
-            Pagina2 pagina = new Pagina2();
+            Pagina2 pagina = new();
             pagina.Show();
-            this.Close();
+            this.Hide();
         }
     }
 }
